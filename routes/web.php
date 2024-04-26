@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/room-details', 'ReservationController@showRoomDetails')->name('room.details');
+
+
+// Route::get('/roomDetails', function () {
+//     return view('welcome');
+// });
