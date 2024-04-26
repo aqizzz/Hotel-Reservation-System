@@ -1,20 +1,15 @@
-<?php
 
-
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet">
-
-</head>
-<body>
-    <form action="{{ route('submitReservation') }}" method="POST" id="reservationForm">
+@extends('layouts.main')
+@section('content')
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+    @endforeach
+@endif
+    <!-- <form action="{{ route('submitReservation') }}" method="POST" id="reservationForm"> -->
+    <form action="" method="POST" id="reservationForm">
         @csrf
         <div class="form-outline mb-4">
             <input type="text" id="name" name="name" class="form-control" required />
@@ -45,7 +40,4 @@
     </form>
 
 
-
-
-</body>
-</html>
+@endsection

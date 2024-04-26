@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/room-details', 'ReservationController@showRoomDetails')->name('room.details');
+Route::get('/room-details', 'App\Http\Controllers\ReservationController@showRoomDetails')->name('room.details');
+Route::get('/reservation', 'App\Http\Controllers\ReservationController@index')->name('reservation');
 
-
-// Route::get('/roomDetails', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
