@@ -1,5 +1,7 @@
 
 @extends('layouts.main')
+@section('title', 'Welcome to XX Hotel')
+
 @section('content')
 @if($errors->any())
     @foreach($errors->all() as $error)

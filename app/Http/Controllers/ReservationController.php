@@ -14,8 +14,6 @@
 
         public function showRoomDetails()
         {
-          
-
             // Open the text file for reading
             $file = fopen('../../../storage/rooms/roomDetails.txt', 'r');
            // C:\xampp\htdocs\temp\assignments\finalProject\Hotel reservation system\Hote_Reservation_System\storage\rooms\roomDetails.txt
