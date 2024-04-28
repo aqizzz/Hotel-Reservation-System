@@ -17,11 +17,13 @@ class CreateBookingsTable extends Migration
         try {
             Schema::create('bookings', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->integer('customer_id');
+                $table->integer('user_id');
                 $table->integer('room_number');
                 $table->date('check_in_date');
                 $table->date('check_out_date');
                 $table->timestamps();
+
+                $table->foreign('user_id')->references('id')->on('users');
             });
         } catch (\Exception $e) {
             // If an exception occurs, throw a new exception with a custom error message

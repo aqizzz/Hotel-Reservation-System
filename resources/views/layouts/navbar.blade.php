@@ -1,3 +1,6 @@
+<?php
+$isLoggedIn = Auth::check();
+?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
   <!-- Container wrapper -->
@@ -44,72 +47,73 @@
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
-      <!-- Icon -->
-      <a class="text-reset me-3" href="#">
-        <i class="fas fa-shopping-cart"></i>
-      </a>
+      @if (!$isLoggedIn)
+        <!-- login and sign up -->
+        <button type="button" class="btn btn-link px-3 me-2" data-mdb-toggle="modal" data-mdb-target="#loginModal">
+          Login
+        </button>
+        <button data-mdb-ripple-init type="button" class="btn btn-info me-4">
+          <a href="{{ route('register') }}" style="text-decoration: none; color: white;">Sign up</a>
+        </button>
+      @endif
 
-      <!-- Notifications -->
-      <div class="dropdown">
-        <a
-          data-mdb-dropdown-init
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
-            <a class="dropdown-item" href="#">Some news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Another news</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </li>
-        </ul>
+      <!-- Modal -->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="wrapper modal-content">
+                <span class="close"><ion-icon name="close" data-mdb-dismiss="modal"></ion-icon></span>
+                <div class="form-box login">
+                    <h4>Log in</h4>
+                    <form action="{{ route('login') }}" method="POST" id="login-form">
+                    @csrf
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person-circle"></ion-icon></span>
+                            <input type="Text" id="username" name="name" required autocomplete="off">
+                            <label for="username">User name</label> 
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" id="password" name="password" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox" id="rememberMe">Remember me</label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <span id="msgBox"></span>
+                        <button type="submit" class="btn btn-info" >Log in</button>
+                    </form>
+              </div>
+            </div>
+        </div>
       </div>
+
       <!-- Avatar -->
-      <div class="dropdown">
-        <a
-          data-mdb-dropdown-init
-          class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuAvatar"
-          role="button"
-          aria-expanded="false"
-        >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-            class="rounded-circle"
-            height="25"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
-          />
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuAvatar"
-        >
-          <li>
-            <a class="dropdown-item" href="#">My profile</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Settings</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">Logout</a>
-          </li>
-        </ul>
-      </div>
+      @if ($isLoggedIn)
+          <div class="dropdown">
+              <a class="dropdown-toggle d-flex align-items-center hidden-arrow" 
+              href="#" id="navbarDropdownMenuAvatar" 
+              role="button" 
+              aria-expanded="false" 
+              data-mdb-toggle="dropdown">
+              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Portrait" loading="lazy"/>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                  <li><a class="dropdown-item" href="#">My profile</a></li>
+                  <li>            
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                  </li>
+              </ul>
+          </div>
+      @endif
     </div>
     <!-- Right elements -->
   </div>
