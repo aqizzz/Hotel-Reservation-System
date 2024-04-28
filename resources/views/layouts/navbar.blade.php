@@ -38,7 +38,7 @@ $isLoggedIn = Auth::check();
           <a class="nav-link" href="/Hotel-Reservation-System/room-details">Rooms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reservation</a>
+          <a class="nav-link" href="{{ route('reservation') }}">Reservation</a>
         </li>
       </ul>
       <!-- Left links -->

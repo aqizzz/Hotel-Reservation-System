@@ -19,3 +19,7 @@ Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logo
 Route::get('/check-auth', function () {
     dd(Auth::check());
 });
+
+Route::get('/reservation', function () {
+    return view('reservation-test');
+})->name('reservation');
