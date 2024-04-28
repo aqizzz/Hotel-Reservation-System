@@ -2,7 +2,7 @@
 $isLoggedIn = Auth::check();
 ?>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary bg-gradient bg-custom">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
@@ -49,7 +49,7 @@ $isLoggedIn = Auth::check();
     <div class="d-flex align-items-center">
       @if (!$isLoggedIn)
         <!-- login and sign up -->
-        <button type="button" class="btn btn-link px-3 me-2" data-mdb-toggle="modal" data-mdb-target="#loginModal">
+        <button type="button" class="btn btn-light px-3 me-2" data-mdb-toggle="modal" data-mdb-target="#loginModal">
           Login
         </button>
         <button data-mdb-ripple-init type="button" class="btn btn-info me-4">

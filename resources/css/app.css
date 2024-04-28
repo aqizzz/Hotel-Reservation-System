@@ -134,3 +134,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.bg-custom {
+  background-color: #E0F7FA;
+}
