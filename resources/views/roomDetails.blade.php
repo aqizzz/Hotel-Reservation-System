@@ -4,27 +4,13 @@
 
 @section('content')
 
-    <!-- <h1>Room Details</h1>
-
-    <ul>
-        @foreach ($roomDetails as $room)
-            <li>
-                Room Type: {{ $room['roomtype'] }},
-                Capacity: {{ $room['capacity'] }},
-                Rate: {{ $room['rate'] }}
-            </li>
-        @endforeach
-    </ul> -->
-
-
-
-
     <div class="container">
         <div class="row">
             @foreach ($roomDetails as $room)
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <img src="/images/{{ strtolower(str_replace(' ', '-', $room['roomtype'])) }}.webp" class="card-img-top" alt="{{ $room['roomtype'] }}">
+                                          
                         <div class="card-body">
                             <h5 class="card-title">{{ $room['roomtype'] }}</h5>
                             <p class="card-text">Capacity: {{ $room['capacity'] }}</p>

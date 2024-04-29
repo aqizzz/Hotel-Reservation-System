@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CheckStepCompleted;
+use App\Http\Controllers\WeatherController;
 
 Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
 
 Route::get('/reservation', 'App\Http\Controllers\ReservationController@getRooms')->name('reservation');
 Route::get('/', 'App\Http\Controllers\CustomerController@index')->name('home');
+
+Route::get('/api/weather', [WeatherController::class, 'getWeather']);
+
 
 Route::post('/login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationForm')->name('register');
