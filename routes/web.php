@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CheckStepCompleted;
 
-Route::get('/room-details', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
+Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
 
 Route::get('/reservation', 'App\Http\Controllers\ReservationController@getRooms')->name('reservation');
 Route::get('/', 'App\Http\Controllers\CustomerController@index')->name('home');
