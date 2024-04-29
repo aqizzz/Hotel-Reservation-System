@@ -1,4 +1,6 @@
+
 Queen Room,2,$200,Mountain-view | Waterfront | Wifi | TV | Kitchen | Pets-allowed
 Featured Queen Room,2,$350,Lake-view | Waterfront | Wifi | TV | Kitchen | Pets-allowed
 Family Room,4,$500,Hot-waterShower | gelCleaning-productsBody | soapShampooHair | dryerHeating
 Deluxe Family Room,8,$900,Beachfront | 45-inch TV | Wifi | TV | Kitchen | Pets-allowed
+

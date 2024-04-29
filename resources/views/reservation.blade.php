@@ -1,7 +1,6 @@
 
 @extends('layouts.main')
 @section('title', 'Reservation')
-
 @section('content')
 <br>
 @if(session('successMsg'))
@@ -141,6 +140,10 @@
             minEndDate.setDate(startDate.getDate() + 1);
             endDateInput.value = minEndDate.toISOString().split('T')[0];
         }
+    });
+
+    window.addEventListener('load', function() {
+        localStorage.removeItem('autoSavedSql_hotel_reservation.rooms');
     });
 </script>
 @endsection

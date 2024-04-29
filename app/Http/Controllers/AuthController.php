@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
+    public function index() {
+        $isLoggedIn = Auth::check();  
+        return view('welcome', compact('isLoggedIn'));
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->only('name', 'password');
@@ -34,6 +39,9 @@ class AuthController extends Controller
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.unique' => 'This username has already been taken. Please choose another username.',
+            'email.unique' => 'This email has already been registered. Please use another email.',
         ]);
 
         $user = new User();
