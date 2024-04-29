@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
-    public function index() {
-        Redirect::route('payment');
-    }
  
     public function payment(Request $request) {
         try {

@@ -14,7 +14,8 @@ Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationFor
 Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register.submit');
 Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
-Route::get('/checkout', 'App\Http\Controllers\ReservationController@checkout')->name('checkout')->middleware(CheckStepCompleted::class);
+Route::get('/payment', 'App\Http\Controllers\ReservationController@payment')->name('payment')->middleware(CheckStepCompleted::class);
+Route::post('/checkout', 'App\Http\Controllers\ReservationController@checkout')->name('checkout')->middleware(CheckStepCompleted::class);
 
 Route::post('/update-step-completed', 'App\Http\Controllers\ReservationController@updateStepCompleted')->name('update.step.completed');
 

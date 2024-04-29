@@ -1,49 +1,21 @@
 <?php
     namespace App\Http\Controllers;
 
+    use Carbon\Carbon;
     use App\Http\Controllers\Controller;
     use App\Models\room;
+    use App\Models\booking;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Session;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redirect;
+    use Illuminate\Support\Facades\Auth;
 
     class ReservationController extends Controller
     {
         public function index()
         {
             return view("reservation");
-        }
-
-        public function showRoomDetails()
-        {
-            // Open the text file for reading
-            $file = fopen('../../../storage/rooms/roomDetails.txt', 'r');
-           // C:\xampp\htdocs\temp\assignments\finalProject\Hotel reservation system\Hote_Reservation_System\storage\rooms\roomDetails.txt
-           
-            $roomDetails = [];
-            // Read and parse each line of the file
-            while (!feof($file)) {
-                $line = fgets($file);
-                $details = explode(',', $line); 
-                // Extract room details
-                $roomNumber = $details[0];
-                $capacity = $details[1];
-                $rate = $details[2];
-
-                // Store room details in an array
-                $roomDetails[] = [
-                    'room_number' => $roomNumber,
-                    'capacity' => $capacity,
-                    'rate' => $rate,
-                ];
-            }
-
-            // Close the file
-            fclose($file);
-
-            // Return parsed room details
-            return view('room-details', ['roomDetails' => $roomDetails]);
         }
 
         public function getRooms(Request $request) {
@@ -64,17 +36,27 @@
                     DB::statement($tmpTableQuery, ['tmp_start_date' => $start_date, 'tmp_end_date' => $end_date]);
 
                     $query = "
-                        SELECT rooms.type, rooms.capacity, COUNT(*) - COUNT(tmp_booked_rooms.room_type) AS available_rooms
+                        SELECT rooms.type, rooms.capacity, rooms.rate, COUNT(*) - COUNT(tmp_booked_rooms.room_type) AS available_rooms
                         FROM rooms
                         LEFT JOIN tmp_booked_rooms ON rooms.type = tmp_booked_rooms.room_type
                         WHERE rooms.capacity >= :capacity
-                        GROUP BY rooms.type, rooms.capacity
+                        GROUP BY rooms.type, rooms.capacity, rooms.rate
                         ORDER BY rooms.rate
                     ";
                             
-                    $rooms = DB::select($query, ['capacity' => $capacity]);   
+                    $rooms = DB::select($query, ['capacity' => $capacity]); 
+
+                    // Calculate the difference in days between start_date and end_date
+                    $days = Carbon::parse($start_date)->diffInDays(Carbon::parse($end_date));
+
+                    // Add the number of days to each room
+                    foreach ($rooms as $room) {
+                        $room->days = $days;
+                    }
+
                     Session::put('checkindate', $start_date);
                     Session::put('checkoutdate', $end_date);
+                    Session::put('days', $days);
                 }
             } catch (\Exception $e) {
                 dd($e->getMessage());
@@ -83,14 +65,53 @@
         }
 
         public function updateStepCompleted(Request $request) {
+            $roomType = $request->room_type;
+            $price = $request->price;
 
-            session(['step_completed' => true]);
+            Session::put('room_type', $roomType);
+            Session::put('price', $price);
+            Session::put('step_completed', true);
 
-            return Redirect::route('checkout'); 
+            return Redirect::route('payment'); 
         }
 
-        public function checkout() {
+        public function payment() {
             return view('payment');
+        }
+
+        public function checkout(Request $request) {
+            try {
+                $roomType = Session::get('room_type');
+                $guestName = $request->input('guestName');
+                $guestPhone = $request->input('guestPhone');
+                $CheckinDate = Session::get('checkindate');
+                $checkoutDate = Session::get('checkoutdate');
+                $createdAt = Carbon::now();
+                if (Auth::check()) {
+                    $user = Auth::user();
+                    $userId = $user->id;
+                }else{
+                    $userId = null;
+                }
+
+                $booking = new booking();
+                $booking->user_id = $userId;
+                $booking->room_type = $roomType;
+                $booking->guest_name = $guestName;
+                $booking->guest_phone = $guestPhone;
+                $booking->check_in_date = $CheckinDate;
+                $booking->check_out_date = $checkoutDate;
+                $booking->created_at = $createdAt;
+                $booking->updated_at = $createdAt;
+            
+                $booking->save();
+
+                Session::flash('message', 'Payment successful!');
+                Session::flash('alert-class', 'alert-success');
+                return Redirect::route('home');
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+            }
         }
     }
 

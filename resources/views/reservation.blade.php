@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label>Check in date: </label>
                         <div class='input-group date'>
-                            <input type='date' class="form-control" id="startd" name="start_date" required/>
+                            <input type='date' class="form-control" id="startd" name="start_date" value="{{ session('checkindate') }}" required/>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label>Check out date: </label>
                         <div class='input-group date'>
-                            <input type='date' class="form-control" id="endd" name="end_date" required/>
+                            <input type='date' class="form-control" id="endd" name="end_date" value="{{ session('checkoutdate') }}" required/>
                         </div>
                     </div>
                 </div>
@@ -61,6 +61,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Max Adult No. </th>
                     <th scope="col">Rooms left</th>
+                    <th scope="col">Price</th>
                 </tr>
             </thead>
             <tbody style="text-align: center;">
@@ -70,10 +71,21 @@
                         <td class="align-middle">{{ $room->type }}</td>
                         <td class="align-middle">{{ $room->capacity }}</td>
                         <td class="align-middle">{{ $room->available_rooms }}</td>
+
+                        <td class="align-middle">
+                            @if (Auth::check())
+                                <del class="text-secondary">${{ $room->rate * $room->days }}</del>
+                                ${{ $room->rate * 0.9 * $room->days }}
+                            @else
+                                ${{ $room->rate * $room->days }}
+                            @endif
+                        </td>
                         @if ($room->available_rooms > 0)
                             <td class="align-middle">
                             <form action="{{ route('update.step.completed') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="room_type" value="{{ $room->type }}">
+                                <input type="hidden" name="price" value="{{ $room->rate * $room->days }}">
                                 <button type="submit" class="btn btn-danger me-4" data-mdb-ripple-init>
                                     Order Now!
                                 </button>

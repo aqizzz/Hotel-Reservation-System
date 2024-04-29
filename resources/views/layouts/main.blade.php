@@ -12,11 +12,11 @@
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('resources/css/bootstrap.min.css') }}" rel="stylesheet">
 
-  <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <!-- <link href="{{ asset('resources/css/mdb.min.css') }}" rel="stylesheet"> -->
   <!-- Your custom styles (optional) -->
   <link href="{{ asset('resources/css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
   <link rel="icon" href="{{ asset('resources/favicon/favicon.ico') }}" type="image/x-icon">
 </head>
 
