@@ -54,12 +54,12 @@ class UserController extends Controller
             
             // Query bookings where check_in_day is greater than two days from today
             $bookings = Booking::where('user_id', $userId)
-                                ->where('check_in_day', '>', $twoDaysLater)
+                                ->where('check_in_date', '>', $twoDaysLater)
                                 ->get();
             
             // Query bookings that do not meet the condition (check_in_day less than or equal to two days from today)
             $history = Booking::where('user_id', $userId)
-                              ->where('check_in_day', '<=', $twoDaysLater)
+                              ->where('check_in_date', '<=', $twoDaysLater)
                               ->get();
             
             // Return the view, passing user and booking data to the view
