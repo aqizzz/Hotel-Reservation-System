@@ -1,0 +1,4 @@
+Family Room,4,500
+
+
+roomtype,capacity,rate
