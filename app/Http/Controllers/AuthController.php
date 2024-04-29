@@ -44,6 +44,10 @@ class AuthController extends Controller
 
         Auth::login($user);
 
+        if (session('step_completed')) {
+          return Redirect::route('payment');
+        }
+
         return Redirect::route('home');
     }
 

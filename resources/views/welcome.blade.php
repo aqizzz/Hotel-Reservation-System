@@ -1,7 +1,11 @@
 @extends('layouts.main')
 @section('title', 'Welcome to Holiday Resort')
 @section('content')
-
+@if (Session::has('message'))
+    <div class="alert {{ Session::get('alert-class', 'alert-info') }}" id="custom-alert">
+        {{ Session::get('message') }}
+    </div>
+@endif
 <div id="carouselExampleCrossfade" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
   <div class="carousel-indicators">
     <button
