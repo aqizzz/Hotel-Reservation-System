@@ -10,7 +10,8 @@ Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails'
 
 Route::get('/', 'App\Http\Controllers\AuthController@index')->name('home');
 
-Route::get('/api/weather', [WeatherController::class, 'getWeather']);
+Route::get('/weather', 'App\Http\Controllers\WeatherController@getWeather');
+
 
 Route::post('/login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationForm')->name('register');
