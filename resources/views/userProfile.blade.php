@@ -57,7 +57,7 @@
                       <td class="align-middle">{{ $booking->created_at }}</td>
 
                       <td class="align-middle">
-                        <button type="submit" class="btn btn-raised btn-danger btn-sm" id="editGuestBtn">
+                        <button type="submit" class="btn btn-raised btn-danger btn-sm">
                             Update guest
                         </button>
                     </td>
@@ -114,16 +114,6 @@
       event.preventDefault();
 
       let inputs = document.querySelectorAll('.profileUser'); 
-
-      inputs.forEach(function(input) { 
-        input.disabled = false; 
-      });
-    });
-
-    document.getElementById('editGuestBtn').addEventListener('click', function(event) {
-      event.preventDefault();
-
-      let inputs = document.querySelectorAll('input.' + '{{ $booking->guest_name }}');
 
       inputs.forEach(function(input) { 
         input.disabled = false; 

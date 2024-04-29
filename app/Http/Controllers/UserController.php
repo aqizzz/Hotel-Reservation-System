@@ -50,13 +50,14 @@ class UserController extends Controller
             $user = User::findOrFail($userId);
             
             // Get the date two days from today
-            $twoDaysLater = Carbon::today()->addDays(2);
-            
+            $today = Carbon::today()->setTime(0, 0, 0);
+            $twoDaysLater = $today->copy()->addDays(2);
+            dump($twoDaysLater);
             // Query bookings where check_in_day is greater than two days from today
             $bookings = Booking::where('user_id', $userId)
                                 ->where('check_in_date', '>', $twoDaysLater)
                                 ->get();
-            
+            dump($bookings);
             // Query bookings that do not meet the condition (check_in_day less than or equal to two days from today)
             $history = Booking::where('user_id', $userId)
                               ->where('check_in_date', '<=', $twoDaysLater)
