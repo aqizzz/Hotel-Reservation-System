@@ -20,3 +20,7 @@ Route::post('/payment', 'App\Http\Controllers\PaymentController@payment')->name(
 Route::get('/check-auth', function () {
     dd(Auth::check());
 });
+
+Route::get('/reservation', function () {
+    return view('reservation-test');
+})->name('reservation');
