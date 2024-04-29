@@ -159,7 +159,7 @@ $isLoggedIn = Auth::check();
               role="button" 
               aria-expanded="false" 
               data-mdb-toggle="dropdown">
-              <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25" alt="Portrait" loading="lazy"/>
+              <img src="{{ asset('resources/images/user.png')}}" class="rounded-circle" height="30" alt="Portrait" loading="lazy"/>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                   <li><a class="dropdown-item" href="#">My profile</a></li>
