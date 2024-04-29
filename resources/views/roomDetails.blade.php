@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             @foreach ($roomDetails as $room)
-                <div class="col-md-3 mb-4">
+                <div class="col-md-6 mb-4">
                     <div class="card">                                 
                     <img src="{{asset('resources/images/'. $room['roomtype']. '.webp') }}" alt="{{ $room['roomtype'] }}">
                                           
