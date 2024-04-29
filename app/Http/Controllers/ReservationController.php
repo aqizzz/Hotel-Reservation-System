@@ -1,5 +1,4 @@
 <?php
-
     namespace App\Http\Controllers;
 
     use App\Http\Controllers\Controller;
@@ -7,6 +6,7 @@
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Session;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Redirect;
 
     class ReservationController extends Controller
     {
@@ -47,7 +47,7 @@
         }
 
         public function getRooms(Request $request) {
-            $rooms = [];
+            $rooms = room::all()->unique('type');
 
             try {
                 if ($request->has(['start_date', 'end_date', 'capacity'])) {
@@ -69,7 +69,7 @@
                         LEFT JOIN tmp_booked_rooms ON rooms.type = tmp_booked_rooms.room_type
                         WHERE rooms.capacity >= :capacity
                         GROUP BY rooms.type, rooms.capacity
-                        ORDER BY rooms.capacity
+                        ORDER BY rooms.rate
                     ";
                             
                     $rooms = DB::select($query, ['capacity' => $capacity]);   
@@ -79,12 +79,19 @@
             } catch (\Exception $e) {
                 dd($e->getMessage());
             }
-        
-            return view('reservation-test', ['rooms' => $rooms]);
+            return view('reservation', ['rooms' => $rooms]);
         }
 
-    }
+        public function updateStepCompleted(Request $request) {
 
-    
+            session(['step_completed' => true]);
+
+            return Redirect::route('checkout'); 
+        }
+
+        public function checkout() {
+            return view('payment');
+        }
+    }
 
 ?>
