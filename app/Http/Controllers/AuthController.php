@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
 
-        return redirect('/')->with('user', $user);
+        return Redirect::route('home')->with('user', $user);
     }
 
     public function showRegistrationForm()
@@ -43,11 +44,13 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return Redirect::route('home');
     }
 
     public function logout() {
       Auth::logout();
-      return redirect('/');
+      return 
+      
+      Redirect::route('home');
     }
 }

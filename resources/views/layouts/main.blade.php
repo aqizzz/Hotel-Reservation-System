@@ -41,6 +41,7 @@
   <!-- MDB core JavaScript -->
   <!-- <script type="text/javascript" src="{{ asset('resources/js/mdb.min.js') }}"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+  <!-- Icon JavaScript -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <!-- <script>
@@ -51,6 +52,8 @@
       });
     });
   </script> -->
+
+  @yield('scripts')
 
 </body>
 

@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::get('/room-details', 'App\Http\Controllers\ReservationController@showRoomDetails')->name('room.details');
-Route::get('/reservation', 'App\Http\Controllers\ReservationController@index')->name('reservation');
 
-Route::get('/', 'App\Http\Controllers\CustomerController@index')->name('home');
+Route::get('/reservation', 'App\Http\Controllers\ReservationController@getRooms')->name('reservation');
 
-
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
 Route::post('/login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationForm')->name('register');
@@ -20,6 +21,3 @@ Route::get('/check-auth', function () {
     dd(Auth::check());
 });
 
-Route::get('/reservation', function () {
-    return view('reservation-test');
-})->name('reservation');

@@ -73,8 +73,8 @@ $isLoggedIn = Auth::check();
                         </div>
                         <div class="input-box">
                             <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                            <input type="password" id="password" name="password" required>
-                            <label for="password">Password</label>
+                            <input type="password" id="login-password" name="password" required>
+                            <label for="login-password">Password</label>
                         </div>
                         <div class="remember-forgot">
                             <label><input type="checkbox" id="rememberMe">Remember me</label>

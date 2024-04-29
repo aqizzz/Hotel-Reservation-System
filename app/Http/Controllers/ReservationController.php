@@ -3,6 +3,9 @@
     namespace App\Http\Controllers;
 
     use App\Http\Controllers\Controller;
+    use App\Models\room;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Session;
     use Illuminate\Http\Request;
 
     class ReservationController extends Controller
@@ -41,6 +44,43 @@
 
             // Return parsed room details
             return view('room-details', ['roomDetails' => $roomDetails]);
+        }
+
+        public function getRooms(Request $request) {
+            $rooms = [];
+
+            try {
+                if ($request->has(['start_date', 'end_date', 'capacity'])) {
+                    $start_date = $request->input('start_date');
+                    $end_date = $request->input('end_date');
+                    $capacity = $request->input('capacity');
+ 
+                    $tmpTableQuery = "
+                        CREATE TEMPORARY TABLE tmp_booked_rooms AS
+                        SELECT room_type
+                        FROM bookings
+                        WHERE check_in_date < :tmp_end_date AND check_out_date > :tmp_start_date
+                    ";
+                    DB::statement($tmpTableQuery, ['tmp_start_date' => $start_date, 'tmp_end_date' => $end_date]);
+
+                    $query = "
+                        SELECT rooms.type, rooms.capacity, COUNT(*) - COUNT(tmp_booked_rooms.room_type) AS available_rooms
+                        FROM rooms
+                        LEFT JOIN tmp_booked_rooms ON rooms.type = tmp_booked_rooms.room_type
+                        WHERE rooms.capacity >= :capacity
+                        GROUP BY rooms.type, rooms.capacity
+                        ORDER BY rooms.capacity
+                    ";
+                            
+                    $rooms = DB::select($query, ['capacity' => $capacity]);   
+                    Session::put('checkindate', $start_date);
+                    Session::put('checkoutdate', $end_date);
+                }
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+            }
+        
+            return view('reservation-test', ['rooms' => $rooms]);
         }
 
     }
