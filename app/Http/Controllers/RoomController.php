@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {public function showRoomDetails()
     {
        
-        $contents = storage::get('roomDetails.txt');
+        $contents = file_get_contents(resource_path('texts/roomDetails.txt'));
 
        
         $lines = explode("\n", $contents);

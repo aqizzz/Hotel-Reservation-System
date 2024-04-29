@@ -4,10 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CheckStepCompleted;
 use App\Http\Middleware\Authenticate;
+use App\Http\Controllers\WeatherController;
 
 Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
 
 Route::get('/', 'App\Http\Controllers\AuthController@index')->name('home');
+
+Route::get('/api/weather', [WeatherController::class, 'getWeather']);
+
 Route::post('/login', 'App\Http\Controllers\AuthController@login')->name('login');
 Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationForm')->name('register');
 Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register.submit');

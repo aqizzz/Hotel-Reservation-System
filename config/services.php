@@ -31,4 +31,7 @@ return [
         ],
     ],
 
+    'openweathermap' => [
+        'key' => env('fb48d3ced1ec2bb1f69946dfa7aaea1f'),
+    ],
 ];

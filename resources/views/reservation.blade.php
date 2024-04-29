@@ -1,7 +1,6 @@
 
 @extends('layouts.main')
 @section('title', 'Reservation')
-
 @section('content')
 <br>
 @if(session('successMsg'))

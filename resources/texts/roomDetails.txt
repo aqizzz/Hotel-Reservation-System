@@ -1,0 +1,4 @@
+Queen Room,2,200
+Featured Queen Room,2,350
+Family Room,4,500
+Deluxe Family Room,8,900
