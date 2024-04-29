@@ -8,8 +8,8 @@
         <div class="row">
             @foreach ($roomDetails as $room)
                 <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="/images/{{ strtolower(str_replace(' ', '-', $room['roomtype'])) }}.webp" class="card-img-top" alt="{{ $room['roomtype'] }}">
+                    <div class="card">                                 
+                    <img src="{{asset('resources/images/'. $room['roomtype']. '.webp') }}" alt="{{ $room['roomtype'] }}">
                                           
                         <div class="card-body">
                             <h5 class="card-title">{{ $room['roomtype'] }}</h5>
