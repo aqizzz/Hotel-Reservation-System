@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\booking;
 use Illuminate\Support\Facades\Auth;
@@ -47,10 +48,22 @@ class UserController extends Controller
         if (Auth::check()) {
             $userId = Auth::id();
             $user = User::findOrFail($userId);
-            $bookings = Booking::where('user_id', $userId)->get();
             
-            // Return view, send back user and booking data
-            return view('userProfile', ['user' => $user, 'bookings' => $bookings]);
+            // Get the date two days from today
+            $twoDaysLater = Carbon::today()->addDays(2);
+            
+            // Query bookings where check_in_day is greater than two days from today
+            $bookings = Booking::where('user_id', $userId)
+                                ->where('check_in_day', '>', $twoDaysLater)
+                                ->get();
+            
+            // Query bookings that do not meet the condition (check_in_day less than or equal to two days from today)
+            $history = Booking::where('user_id', $userId)
+                              ->where('check_in_day', '<=', $twoDaysLater)
+                              ->get();
+            
+            // Return the view, passing user and booking data to the view
+            return view('userProfile', ['user' => $user, 'bookings' => $bookings, 'history' => $history]);
         } else {
             return redirect(route('home'));
         }
@@ -70,6 +83,6 @@ class UserController extends Controller
 
     public function delete($id){
         booking::find($id)->delete();
-        return redirect(route('userProfile'))->with('successMsg','Booking delete Successfully');
+        return redirect(route('userProfile'))->with('successMsg','Booking canceled Successfully');
     }
 }

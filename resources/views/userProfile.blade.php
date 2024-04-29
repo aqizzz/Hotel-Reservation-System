@@ -28,56 +28,82 @@
     
   </form>
 </div>
-<center><h3>Order History</h3></center>
-  @if (!empty($bookings))
-        <table class="table">
-            <thead class="black white-text" style="text-align: center;">
-                <tr>
-                    <th scope="col">Order No.</th>
-                    <th scope="col">Room type</th>
-                    <th scope="col">Guest Name</th>
-                    <th scope="col">Guest Phone</th>
-                    <th scope="col">Checkin Date</th>
-                    <th scope="col">Checkout Date</th>
-                    <th scope="col">Order Created</th>
-                </tr>
-            </thead>
-            <tbody style="text-align: center;">
-                @foreach($bookings as $booking)
-                  <form action="{{ route('updateGuest', ['id' => $booking->id]) }}" method="POST">
-                    @csrf
-                    <tr>
-                        <th scope="row" class="align-middle">{{ $booking->id }}</th>
-                        <td class="align-middle">{{ $booking->room_type }}</td>
-                        <td class="align-middle"><input type="text" value="{{ $booking->guest_name }}" name="guest_name"></td>
-                        <td class="align-middle"><input type="text" value="{{ $booking->guest_phone }}" name="guest_phone"></td>
-                        <td class="align-middle ">{{ $booking->check_in_date }}</td>
-                        <td class="align-middle">{{ $booking->check_out_date }}</td>
-                        <td class="align-middle">{{ $booking->created_at }}</td>
 
-                        <td class="align-middle">
-                          <button type="submit" class="btn btn-raised btn-danger btn-sm" id="editGuestBtn">
-                              Update guest
-                          </button>
-                      </td>
-                  </form>
-                    <td class="align-middle">
-                        <form action="{{ route('delete', ['id' => $booking->id]) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-dark btn-sm">Cancel Order</button>
-                        </form>
+@if (!empty($bookings))
+<center><h3>Orders</h3></center>
+      <table class="table">
+          <thead class="black white-text" style="text-align: center;">
+              <tr>
+                  <th scope="col">Order No.</th>
+                  <th scope="col">Room type</th>
+                  <th scope="col">Guest Name</th>
+                  <th scope="col">Guest Phone</th>
+                  <th scope="col">Checkin Date</th>
+                  <th scope="col">Checkout Date</th>
+                  <th scope="col">Order Created</th>
+              </tr>
+          </thead>
+          <tbody style="text-align: center;">
+              @foreach($bookings as $booking)
+                <form action="{{ route('updateGuest', ['id' => $booking->id]) }}" method="POST">
+                  @csrf
+                  <tr>
+                      <th scope="row" class="align-middle">{{ $booking->id }}</th>
+                      <td class="align-middle">{{ $booking->room_type }}</td>
+                      <td class="align-middle"><input type="text" value="{{ $booking->guest_name }}" name="guest_name"></td>
+                      <td class="align-middle"><input type="text" value="{{ $booking->guest_phone }}" name="guest_phone"></td>
+                      <td class="align-middle ">{{ $booking->check_in_date }}</td>
+                      <td class="align-middle">{{ $booking->check_out_date }}</td>
+                      <td class="align-middle">{{ $booking->created_at }}</td>
+
+                      <td class="align-middle">
+                        <button type="submit" class="btn btn-raised btn-danger btn-sm" id="editGuestBtn">
+                            Update guest
+                        </button>
                     </td>
-                  </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <div class="container">
-            <img src="{{ asset('resources/images/holiday-resort-04.webp')}}" alt="holiday resort photo">
-        </div>
-    @endif
+                </form>
+                  <td class="align-middle">
+                      <form action="{{ route('delete', ['id' => $booking->id]) }}" method="POST">
+                          @csrf
+                          <button type="submit" class="btn btn-dark btn-sm">Cancel Order</button>
+                      </form>
+                  </td>
+                </tr>
+              @endforeach
+          </tbody>
+      </table>
+  @endif
 
-
+@if (!empty($history))
+<center><h3>Order History</h3></center>
+    <table class="table">
+        <thead class="black white-text" style="text-align: center;">
+            <tr>
+                <th scope="col">Order No.</th>
+                <th scope="col">Room type</th>
+                <th scope="col">Guest Name</th>
+                <th scope="col">Guest Phone</th>
+                <th scope="col">Checkin Date</th>
+                <th scope="col">Checkout Date</th>
+                <th scope="col">Order Created</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            @foreach($history as $booking)
+                <tr>
+                    <th scope="row" class="align-middle">{{ $booking->id }}</th>
+                    <td class="align-middle">{{ $booking->room_type }}</td>
+                    <td class="align-middle"><input type="text" value="{{ $booking->guest_name }}" name="guest_name"></td>
+                    <td class="align-middle"><input type="text" value="{{ $booking->guest_phone }}" name="guest_phone"></td>
+                    <td class="align-middle ">{{ $booking->check_in_date }}</td>
+                    <td class="align-middle">{{ $booking->check_out_date }}</td>
+                    <td class="align-middle">{{ $booking->created_at }}</td>
+                </td>
+              </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endif
 
 @endsection
 
