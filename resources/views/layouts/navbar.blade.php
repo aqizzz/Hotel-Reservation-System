@@ -39,70 +39,11 @@ $isLoggedIn = Auth::check();
            <a class="nav-link" href="{{ route('room.details') }}">Rooms</a>
         </li>
 
-
         <li class="nav-item">
           <a class="nav-link" href="{{ route('reservation') }}">Reservation</a>
         </li>
 
-        <li class="nav-item">
-          <button type="button" class="btn btn-tertiary" id="weatherBtn">Weather</button>
-        </li>
       </ul>
-
-
-          <!-- 模态框 -->
-          <div class="modal fade" id="weatherModal" tabindex="-1" role="dialog" aria-labelledby="weatherModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h6 class="modal-title" id="weatherModalLabel">Weather</h6>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                          <!-- 使用 Blade 模板语法来显示天气信息 -->
-                          <p id="weatherInfo">Loading weather information...</p>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <!-- 引入 jQuery -->
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-          <!-- 引入 MDBootstrap 的 JavaScript 库 -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-
-          <script>
-              function getWeather() {
-            fetch('/api/weather?cityName=yakutsk')
-                .then(function(response) {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(function(data) {
-                    var weather = data.weather[0].description;
-                    console.log("Current weather in Yakutsk: " + weather);
-                })
-                .catch(function(error) {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        }
-
-        getWeather();
-
-          </script>
-
-
-
-
-
 
       <!-- Left links -->
     </div>
