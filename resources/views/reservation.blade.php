@@ -141,5 +141,9 @@
             endDateInput.value = minEndDate.toISOString().split('T')[0];
         }
     });
+
+    window.addEventListener('load', function() {
+        localStorage.removeItem('autoSavedSql_hotel_reservation.rooms');
+    });
 </script>
 @endsection

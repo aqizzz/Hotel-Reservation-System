@@ -57,6 +57,7 @@
                     Session::put('checkindate', $start_date);
                     Session::put('checkoutdate', $end_date);
                     Session::put('days', $days);
+                    Session::forget('autoSavedSql_hotel_reservation.rooms');
                 }
             } catch (\Exception $e) {
                 dd($e->getMessage());

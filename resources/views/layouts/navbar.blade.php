@@ -162,7 +162,7 @@ $isLoggedIn = Auth::check();
               <img src="{{ asset('resources/images/user.png')}}" class="rounded-circle" height="30" alt="Portrait" loading="lazy"/>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                  <li><a class="dropdown-item" href="#">My profile</a></li>
+                  <li><a class="dropdown-item" href="{{ route('userProfile') }}">My profile</a></li>
                   <li>            
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();

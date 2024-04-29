@@ -44,14 +44,7 @@
   <!-- Icon JavaScript -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var dropdownElementList = [].slice.call(document.querySelectorAll('[data-mdb-dropdown-toggle]'))
-      var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-        return new mdb.Dropdown(dropdownToggleEl);
-      });
-    });
-  </script> -->
+
 
   @yield('scripts')
 

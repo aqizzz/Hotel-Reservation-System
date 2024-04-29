@@ -23,6 +23,9 @@ Route::post('/checkout', 'App\Http\Controllers\ReservationController@checkout')-
 Route::post('/update-step-completed', 'App\Http\Controllers\ReservationController@updateStepCompleted')->name('update.step.completed');
 
 Route::get('/userProfile','App\Http\Controllers\UserController@index')->name('userProfile')->middleware(Authenticate::class);
+Route::POST('/userProfile','App\Http\Controllers\UserController@update')->name('updateProfile')->middleware(Authenticate::class);
+Route::POST('/updateProfile/{id}','App\Http\Controllers\UserController@updateGuest')->name('updateGuest')->middleware(Authenticate::class);
+Route::POST('/cancel/{id}','App\Http\Controllers\UserController@delete')->name('delete')->middleware(Authenticate::class);
 
 Route::get('/check-auth', function () {
     dd(Auth::check());
