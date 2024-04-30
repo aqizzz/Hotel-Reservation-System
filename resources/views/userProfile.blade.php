@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'User profile')
+@section('title', 'Holiday Resort - User profile')
 @section('content')
 @if (session('successMsg'))
     <div class="alert alert-success">

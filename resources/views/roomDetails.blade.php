@@ -1,7 +1,7 @@
 
 
 @extends('layouts.main')
-@section('title', 'Welcome to XX Hotel')
+@section('title', 'Holiday Resort - Rooms')
  
 @section('content')
 <br>

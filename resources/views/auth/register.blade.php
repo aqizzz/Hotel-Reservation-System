@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Registration')
+@section('title', 'Holiday Resort - Registration')
 @section('content')
 @if ($errors->any())
     <div class="alert alert-danger">

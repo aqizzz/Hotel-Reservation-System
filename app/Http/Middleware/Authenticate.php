@@ -18,7 +18,7 @@ class Authenticate
     {
 
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('home');
         }
         return $next($request);
     }

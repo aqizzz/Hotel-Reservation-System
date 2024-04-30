@@ -1,6 +1,6 @@
 
 @extends('layouts.main')
-@section('title', 'Reservation')
+@section('title', 'Holiday Resort - Reservation')
 @section('content')
 @if(session('successMsg'))
     <div class="alert alert-danger" role="alert">
