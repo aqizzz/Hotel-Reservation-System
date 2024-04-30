@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>@yield('title', 'Holiday Resort')</title>
+  <meta name="keywords" content="holiday, resort, hetel, Mabian">
+  <meta name="description" content="Escape to our tranquil mountain resort nestled in the heart of the forest. Discover the perfect blend of relaxation and adventure with our holiday accommodations and room reservation services. Immerse yourself in nature's beauty while enjoying comfortable lodging and exploring nearby hiking trails, scenic views, and outdoor activities. Book your stay with us and experience the ultimate mountain getaway.">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
