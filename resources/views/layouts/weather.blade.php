@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Weather Information</title>
-</head>
-<body>
+<Div>
     @if(isset($errorMessage))
         <p>{{ $errorMessage }}</p>
     @else
-        <p>Weather in : {{ $cityName }}</p>
-        <p>Temperature: {{ $temp }}</p>
-        <p>Description: {{ $description }}</p>
+       <div class="row">
+                <center><span>Weather in {{ $cityName }}: </span><span> {{ $temp }}°C </span><span>  {{ $description }}</span></center>
+       </div>
     @endif
-</body>
-</html>
+</Div>

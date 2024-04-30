@@ -2,12 +2,14 @@
 @extends('layouts.main')
 @section('title', 'Reservation')
 @section('content')
-<br>
 @if(session('successMsg'))
     <div class="alert alert-danger" role="alert">
     	{{ session('successMsg') }}
     </div>
 @endif
+<div id="ww_5ba0684857abd" v='1.3' loc='id' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":["wl2935"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#0097A7","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#FFFFFF","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'>More forecasts: <a href="https://oneweather.org/calgary/30_days/" id="ww_5ba0684857abd_u" target="_blank">Calgary weather forecast 30 days</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_5ba0684857abd"></script>
+@include('layouts.weather')
+<br>
 <div class="container">
     <div id="search-bar">
         <form action="{{route('reservation')}}" method="GET">

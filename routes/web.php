@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CheckStepCompleted;
 use App\Http\Middleware\Authenticate;
-use App\Http\Controllers\WeatherController;
+
 
 Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
 

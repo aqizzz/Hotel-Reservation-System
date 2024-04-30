@@ -6,6 +6,13 @@
         {{ Session::get('message') }}
     </div>
 @endif
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <div class="alert alert-danger" role="alert">
+            {{ $error }}
+        </div>
+    @endforeach
+@endif
 <div id="carouselExampleCrossfade" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
   <div class="carousel-indicators">
     <button

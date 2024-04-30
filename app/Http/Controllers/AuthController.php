@@ -20,12 +20,12 @@ class AuthController extends Controller
         $credentials = $request->only('name', 'password');
 
         if (!Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return redirect()->route('home')->with('error', 'Invalid credentials. Please try again.');
         }
 
         $user = Auth::user();
 
-        return Redirect::route('home')->with('user', $user);
+        return redirect()->route('home', ['user' => $user]);
     }
 
     public function showRegistrationForm()
@@ -52,7 +52,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        if (session('step_completed')) {
+        if (session('price')) {
           return Redirect::route('payment');
         }
 
@@ -61,8 +61,6 @@ class AuthController extends Controller
 
     public function logout() {
       Auth::logout();
-      return 
-      
-      Redirect::route('home');
+      return Redirect::route('home');
     }
 }
