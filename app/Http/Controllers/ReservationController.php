@@ -10,29 +10,11 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Facades\Auth;
-    use Illuminate\Support\Facades\Http;
 
     class ReservationController extends Controller
     {
         public function getRooms(Request $request) {
             $rooms = room::all()->unique('type');
-            $apiKey = 'c9adcb73dd1bd4837e7a13886563e462';
-            $cityName = "Montreal";
-            $url = 'https://api.openweathermap.org/data/2.5/weather?q=' . 
-                    $cityName . 
-                    '&appid=' . 
-                    $apiKey;
-    
-            $response = Http::get($url);
-    
-            if ($response->failed()) {
-                $errorMessage = 'Error API returned status code ' . $response->status();
-                return view('weather', ['errorMessage' => $errorMessage]);
-            }
-    
-            $weatherData = $response->json();
-            $temp = $weatherData['main']['temp'] - 273.15;
-            $description = $weatherData['weather'][0]['description'];
 
             try {
                 if ($request->has(['start_date', 'end_date', 'capacity'])) {
@@ -75,8 +57,7 @@
             } catch (\Exception $e) {
                 dd($e->getMessage());
             }
-            return view('reservation', ['rooms' => $rooms,'cityName' => $cityName, 'temp' => $temp,
-            'description' => $description]);
+            return view('reservation', ['rooms' => $rooms, 'weather' => $request->weather]);
         }
 
         public function updateStepCompleted(Request $request) {

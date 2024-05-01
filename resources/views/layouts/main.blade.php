@@ -11,6 +11,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Font Google -->
+  <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('resources/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -19,6 +21,7 @@
   <!-- Your custom styles (optional) -->
   <link href="{{ asset('resources/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('resources/css/weather.css') }}" rel="stylesheet" type="text/css" media="all" />
   <link rel="icon" href="{{ asset('resources/favicon/favicon.ico') }}" type="image/x-icon">
 </head>
 
@@ -46,6 +49,7 @@
   <!-- Icon JavaScript -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="{{ asset('resources/js/skycons.js') }}"></script>
 
 
   @yield('scripts')

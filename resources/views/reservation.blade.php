@@ -7,9 +7,13 @@
     	{{ session('successMsg') }}
     </div>
 @endif
-<div id="ww_5ba0684857abd" v='1.3' loc='id' a='{"t":"responsive","lang":"en","sl_lpl":1,"ids":["wl2935"],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#0097A7","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#FFFFFF","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","cl_odd":"#0000000a"}'>More forecasts: <a href="https://oneweather.org/calgary/30_days/" id="ww_5ba0684857abd_u" target="_blank">Calgary weather forecast 30 days</a></div><script async src="https://app2.weatherwidget.org/js/?id=ww_5ba0684857abd"></script>
+@if (Session::has('error'))
+    <div class="alert alert-danger">
+        {{ Session::get('error') }}
+    </div>
+@endif
 @include('layouts.weather')
-<br>
+<br><br>
 <div class="container">
     <div id="search-bar">
         <form action="{{route('reservation')}}" method="GET">
@@ -147,5 +151,146 @@
     window.addEventListener('load', function() {
         localStorage.removeItem('autoSavedSql_hotel_reservation.rooms');
     });
+
+    $(document).ready(function() {
+        $('#startd').on('change', function() {
+            var date = $(this).val();
+            $.ajax({
+                url: '/reservation', 
+                method: 'GET',
+                data: {
+                    date: date
+                },
+                success: function(response) {
+                    $('#error-message').empty();
+                },
+                error: function(xhr, status, error) {
+                    $('#error-message').text('Failed to fetch weather information');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+
+
+    var icons1 = new Skycons({"color": "#FFD700"}),
+        list  = [
+            "clear-day", "clear-day-0", "clear-day-1", "clear-day-2", "clear-day-3", "clear-day-4", "clear-day-5", "clear-day-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons1.set(list[i], "clear-day");
+    }
+
+    icons1.play();
+
+    var icons2 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "partly-cloudy-day", "partly-cloudy-day-0", "partly-cloudy-day-1", "partly-cloudy-day-2", "partly-cloudy-day-3", "partly-cloudy-day-4", "partly-cloudy-day-5", "partly-cloudy-day-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons2.set(list[i], "partly-cloudy-day");
+    }
+
+    icons2.play();
+
+    var icons3 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "rain", "rain-0", "rain-1", "rain-2", "rain-3", "rain-4", "rain-5", "rain-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons3.set(list[i], "rain");
+    }
+
+    icons3.play();
+
+    var icons4 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "clear-night", "clear-night-0", "clear-night-1", "clear-night-2", "clear-night-3", "clear-night-4", "clear-night-5", "clear-night-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons4.set(list[i], "clear-night");
+    }
+
+    icons4.play();
+
+    var icons5 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "partly-cloudy-night", "partly-cloudy-night-0", "partly-cloudy-night-1", "partly-cloudy-night-2", "partly-cloudy-night-3", "partly-cloudy-night-4", "partly-cloudy-night-5", "partly-cloudy-night-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons5.set(list[i], "partly-cloudy-night");
+    }
+
+    icons5.play();
+
+    var icons6 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "cloudy", "cloudy-0", "cloudy-1", "cloudy-2", "cloudy-3", "cloudy-4", "cloudy-5", "cloudy-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons6.set(list[i], "cloudy");
+    }
+
+    icons6.play();
+
+    var icons7 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "sleet", "sleet-0", "sleet-1", "sleet-2", "sleet-3", "sleet-4", "sleet-5", "sleet-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons7.set(list[i], "sleet");
+    }
+
+    icons7.play();
+
+    var icons8 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "snow", "snow-0", "snow-1", "snow-2", "snow-3", "snow-4", "snow-5", "snow-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons8.set(list[i], "snow");
+    }
+
+    icons8.play();
+
+    var icons9 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "wind", "wind-0", "wind-1", "wind-2", "wind-3", "wind-4", "wind-5", "wind-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons9.set(list[i], "wind");
+    }
+
+    icons9.play();
+
+    var icons10 = new Skycons({"color": "#f5f5f5"}),
+        list  = [
+            "fog", "fog-0", "fog-1", "fog-2", "fog-3", "fog-4", "fog-5", "fog-6"
+        ],
+        i;
+
+    for(i = 0; i < list.length; i++) {
+        icons10.set(list[i], "fog");
+    }
+
+    icons10.play();
 </script>
 @endsection

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckStepCompleted;
 use App\Http\Middleware\Authenticate;
-
+use App\Http\Middleware\Weather;
 
 Route::get('/roomDetails', 'App\Http\Controllers\RoomController@showRoomDetails')->name('room.details');
 
@@ -17,7 +17,7 @@ Route::get('/register', 'App\Http\Controllers\AuthController@showRegistrationFor
 Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register.submit');
 Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 
-Route::get('/reservation', 'App\Http\Controllers\ReservationController@getRooms')->name('reservation');
+Route::get('/reservation', 'App\Http\Controllers\ReservationController@getRooms')->name('reservation')->middleware(Weather::class);
 Route::get('/payment', 'App\Http\Controllers\ReservationController@payment')->name('payment')->middleware(CheckStepCompleted::class);
 Route::post('/checkout', 'App\Http\Controllers\ReservationController@checkout')->name('checkout')->middleware(CheckStepCompleted::class);
 Route::post('/update-step-completed', 'App\Http\Controllers\ReservationController@updateStepCompleted')->name('update.step.completed');
