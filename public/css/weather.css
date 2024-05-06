@@ -12,7 +12,7 @@ h1 {
 }
 .main-info {
     width: 100%;
-    margin: 0 auto;
+    margin: 0;
     background: #49a0b2;
     padding: 1.5em 10em;
 	border-radius: 5px;
@@ -106,43 +106,19 @@ figure.icons {
     padding: 5em 0 0;
 }
 }
-@media(max-width:1366px){
-.main-info {
-    width: 37%;
-}
-}
-@media(max-width:1280px){
-.main-info {
-    width: 39%;
-}
-}
-@media(max-width:1080px){
-.main-info {
-    width: 46%;
-}
-}
-@media(max-width:1024px){
-.main-info {
-    width: 47%;
-}
-}
-@media(max-width:900px){
-.main-info {
-    width: 50%;
-}
-}
+
 @media(max-width:800px){
 .main {
     padding: 4em 0 0;
 }
 .main-info {
-	margin: 4em auto;
+	margin: 0;
 }
 h1 {
     font-size: 2.8em;
 }
 .main-info {
-    width: 58%;
+    width: 100%;
 }
 }
 @media(max-width:640px){
@@ -150,7 +126,7 @@ h1 {
     font-size: 2.6em;
 }
 .main-info {
-    width: 70%;
+    width: 100%;
 	padding: 1.5em;
 }
 .weather-grids h2 {
@@ -162,8 +138,8 @@ h1 {
     font-size: 2.2em;
 }
 .main-info {
-    width: 82%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 ;
 }
 .weather-grids h3 {
     font-size: 1.3em;
@@ -219,8 +195,8 @@ h1 {
     font-size: 1.6em;
 }
 .main-info {
-    width: 82%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 ;
     padding: 1em;
 }
 .weather-grids h2 {

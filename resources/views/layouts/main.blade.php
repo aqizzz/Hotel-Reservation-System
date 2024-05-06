@@ -14,15 +14,15 @@
   <!-- Font Google -->
   <link href='//fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
   <!-- Bootstrap core CSS -->
-  <link href="{{ asset('resources/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
   <!-- Material Design Bootstrap -->
   <!-- <link href="{{ asset('resources/css/mdb.min.css') }}" rel="stylesheet"> -->
   <!-- Your custom styles (optional) -->
-  <link href="{{ asset('resources/css/style.css') }}" rel="stylesheet">
-  <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('resources/css/weather.css') }}" rel="stylesheet" type="text/css" media="all" />
-  <link rel="icon" href="{{ asset('resources/favicon/favicon.ico') }}" type="image/x-icon">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/weather.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link rel="icon" href="{{ asset('favicon/favicon.ico') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -37,11 +37,11 @@
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-  <script type="text/javascript" src="{{ asset('resources/js/jquery-3.4.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="{{ asset('resources/js/popper.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="{{ asset('resources/js/bootstrap.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
   <!-- MDB core JavaScript -->
   <!-- <script type="text/javascript" src="{{ asset('resources/js/mdb.min.js') }}"></script> -->
@@ -49,7 +49,7 @@
   <!-- Icon JavaScript -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="{{ asset('resources/js/skycons.js') }}"></script>
+  <script src="{{ asset('js/skycons.js') }}"></script>
 
 
   @yield('scripts')

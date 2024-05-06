@@ -72,7 +72,7 @@
             <tbody style="text-align: center;">
                 @foreach($rooms as $room)
                     <tr>
-                        <th scope="row" class="align-middle"><img src="{{ asset('resources/images/' . $room->type . '-thumbnail.webp') }}" alt="{{ $room->type }}"></th>
+                        <th scope="row" class="align-middle"><img src="{{ asset('images/' . $room->type . '-thumbnail.webp') }}" alt="{{ $room->type }}"></th>
                         <td class="align-middle">{{ $room->type }}</td>
                         <td class="align-middle">{{ $room->capacity }}</td>
                         <td class="align-middle">{{ $room->available_rooms }}</td>
@@ -103,7 +103,7 @@
         </table>
     @else
         <div class="container">
-            <img src="{{ asset('resources/images/holiday-resort-04.webp')}}" alt="holiday resort photo">
+            <img src="{{ asset('images/holiday-resort-04.webp')}}" alt="holiday resort photo">
         </div>
     @endif
 </div>

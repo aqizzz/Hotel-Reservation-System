@@ -11,7 +11,7 @@
             @foreach ($roomDetails as $room)
                 <div class="col-md-6 mb-4">
                     <div class="card">                                
-                    <img src="{{asset('resources/images/' . $room['roomtype'] . '.webp') }}" alt="{{ $room['roomtype'] }}">
+                    <img src="{{asset('images/' . $room['roomtype'] . '.webp') }}" alt="{{ $room['roomtype'] }}">
                                          
                         <div class="card-body">
                             <h5 class="card-title">{{ $room['roomtype'] }}</h5>

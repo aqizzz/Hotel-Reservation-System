@@ -23,7 +23,7 @@ $isLoggedIn = Auth::check();
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="{{ asset('resources/images/hotel.png') }}"
+          src="{{ asset('images/hotel.png') }}"
           height="50"
           alt="Hotel Logo"
           loading="lazy"
@@ -32,7 +32,7 @@ $isLoggedIn = Auth::check();
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/Hotel-Reservation-System/">Home</a>
+          <a class="nav-link" href="{{ route('home') }}">Home</a>
         </li>
 
         <li class="nav-item">
@@ -100,7 +100,7 @@ $isLoggedIn = Auth::check();
               role="button" 
               aria-expanded="false" 
               data-mdb-toggle="dropdown">
-              <img src="{{ asset('resources/images/user.png')}}" class="rounded-circle" height="30" alt="Portrait" loading="lazy"/>
+              <img src="{{ asset('images/user.png')}}" class="rounded-circle" height="30" alt="Portrait" loading="lazy"/>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                   <li><a class="dropdown-item" href="{{ route('userProfile') }}">My profile</a></li>
