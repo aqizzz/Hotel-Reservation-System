@@ -57,7 +57,7 @@
             } catch (\Exception $e) {
                 dd($e->getMessage());
             }
-            return view('reservation', ['rooms' => $rooms, 'weather' => $request->weather]);
+            return view('reservation', ['rooms' => $rooms, 'weather' => $request->weather, 'currentConditions' => $request->currentConditions]);
         }
 
         public function updateStepCompleted(Request $request) {

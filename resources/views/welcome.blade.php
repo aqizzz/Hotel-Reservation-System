@@ -38,21 +38,21 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{asset('images/holiday-resort-01.jpg')}}" class="d-block w-100" alt="Holiday resort Landscape"/>
+      <img src="{{asset('images/holiday-resort-01.jpg')}}" style="max-width: 100%;" class="d-block w-100" alt="Holiday resort Landscape"/>
       <div class="carousel-caption d-none d-md-block">
         <h2>Welcome to Holiday Resort</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{asset('images/holiday-resort-02.webp')}}" class="d-block w-100" alt="Holiday resort scenery"/>
+      <img src="{{asset('images/holiday-resort-02.webp')}}" style="max-width: 100%;" class="d-block w-100" alt="Holiday resort scenery"/>
       <div class="carousel-caption d-none d-md-block">
         <h2>Welcome to Holiday Resort</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="{{asset('images/holiday-resort-03.webp')}}"class="d-block w-100" alt="Holiday resort hillside"/>
+      <img src="{{asset('images/holiday-resort-03.webp')}}"class="d-block w-100" style="max-width: 100%;" alt="Holiday resort hillside"/>
       <div class="carousel-caption d-none d-md-block">
         <h2>Welcome to Holiday Resort</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>

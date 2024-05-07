@@ -31,7 +31,7 @@ class Weather
         }
 
         $endDate = Carbon::parse($startDate)->addDays(6)->toDateString();
-        $url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'. $cityName . '/' . $startDate . '/' . $endDate . '?unitGroup=metric&elements=datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days%2Cfcst%2Cobs%2Cremote&key=' . $apiKey . '&contentType=json';
+        $url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'. $cityName . '/' . $startDate . '/' . $endDate . '?unitGroup=metric&elements=datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cicon&include=days%2Ccurrent&key=' . $apiKey . '&contentType=json';
 
         $response = Http::get($url);
 
@@ -42,8 +42,9 @@ class Weather
 
         $weatherData = json_decode($response, true);
         $days = $weatherData['days'];
+        $currentConditions = $weatherData['currentConditions'];
 
-        $request->merge(['weather' => $days]);
+        $request->merge(['weather' => $days, 'currentConditions' => $currentConditions]);
 
         return $next($request);
     }

@@ -8,14 +8,15 @@
                 <div class="weather-top">	
                     <div class="weather-grids">
                         <h3 class="fri">{{ (new DateTime($weather[0]['datetime']))->format('l') }} </h3>
-                        <h3>Weather</h3>
+                        <h3>{{ htmlspecialchars((new DateTime($weather[0]['datetime']))->format('d/m/Y')) }}</h3>
                     </div>
                     <div class="weather-grids weather-mdl">
                         <canvas id="{{ $weather[0]['icon'] }}" width="70" height="70"></canvas>
+                        <h3>{{ $weather[0]['icon'] }}</h3>
                     </div>
                     <div class="weather-grids">
                         <h4>Max {{ $weather[0]['tempmax'] }}°C</h4>
-                        <h2>{{ $weather[0]['temp'] }}°C</h2>
+                        <h2>{{ $currentConditions['temp'] }}°C</h2>
                         <h4>Min {{ $weather[0]['tempmin'] }}°C</h4>
                     </div>
                     <div class="clear"> </div>
