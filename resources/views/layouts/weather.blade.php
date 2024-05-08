@@ -16,7 +16,11 @@
                     </div>
                     <div class="weather-grids">
                         <h4>Max {{ $weather[0]['tempmax'] }}°C</h4>
+                    @if($currentConditions)
                         <h2>{{ $currentConditions['temp'] }}°C</h2>
+                    @else
+                        <h2>{{ $weather[0]['temp'] }}°C</h2>
+                    @endif
                         <h4>Min {{ $weather[0]['tempmin'] }}°C</h4>
                     </div>
                     <div class="clear"> </div>
